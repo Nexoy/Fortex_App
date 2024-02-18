@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "838793695534",
+    "project_id": "fortex-app-project",
+    "storage_bucket": "fortex-app-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838793695534:android:31192e412ceb38d8622abf",
+        "android_client_info": {
+          "package_name": "com.example.fortex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEh9cJppdge6gzFAhifs3Uv3mWbHxvslk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
