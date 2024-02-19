@@ -1,8 +1,8 @@
 ## Projekt aplikacji Fortex
 
-Fortex to rewolucyjna aplikacja mobilna stworzona z myślą o pasjonatach gier komputerowych. Dzięki niej użytkownicy mogą założyć swoje konto, zalogować się i czerpać z bogatej palety funkcji związanych z fascynującym światem gier.
+**Fortex** to rewolucyjna aplikacja mobilna stworzona z myślą o pasjonatach gier komputerowych. Dzięki niej użytkownicy mogą założyć swoje konto, zalogować się i czerpać z bogatej palety funkcji związanych z fascynującym światem gier.
 
-Funkcje:
+## Funkcje:
 
 1. **Rejestracja i Logowanie:** Użytkownicy mogą łatwo utworzyć swoje konto w aplikacji Fortex, podając niezbędne dane, a następnie zalogować się na nie za pomocą swojego adresu e-mai lub nazwy konta i hasła.
 
