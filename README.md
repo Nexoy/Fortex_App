@@ -1,6 +1,6 @@
 ## Projekt aplikacji Fortex
 
-**Fortex** to rewolucyjna aplikacja mobilna stworzona z myślą o pasjonatach gier komputerowych. Dzięki niej użytkownicy mogą założyć swoje konto, zalogować się i czerpać z bogatej palety funkcji związanych z fascynującym światem gier.
+**Fortex** to rewolucyjna aplikacja mobilna na telefony z systemem android stworzona z myślą o pasjonatach gier komputerowych. Dzięki niej użytkownicy mogą założyć swoje konto, zalogować się i czerpać z bogatej palety funkcji związanych z fascynującym światem gier.
 
 ## Funkcje:
 
