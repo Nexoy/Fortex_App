@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#12171D"
     android:layout_height="match_parent"
-    tools:context=".Game_Offert_Activity">
+    android:background="#12171D"
+    tools:context=".Game_offer_Activity">
 
     <ImageView
-        android:id="@+id/offert_back_arrow_imageView"
+        android:id="@+id/offer_back_arrow_imageView"
         android:layout_width="30dp"
         android:layout_height="29dp"
         android:layout_marginStart="16dp"
@@ -18,9 +18,9 @@
         app:srcCompat="@drawable/back_arrow" />
 
     <ImageView
-        android:id="@+id/offert_game_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:id="@+id/offer_game_imageView"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,54 +29,54 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/offert_game_name_textView"
+        android:id="@+id/offer_game_name_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offert_game_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/offer_game_imageView" />
 
     <TextView
-        android:id="@+id/offert_developer_textView"
+        android:id="@+id/offer_developer_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offert_game_name_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/offer_game_name_textView" />
 
     <TextView
-        android:id="@+id/offert_released_textView"
+        android:id="@+id/offer_released_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offert_developer_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/offer_developer_textView" />
 
     <TextView
-        android:id="@+id/offert_description_textView"
+        android:id="@+id/offer_description_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offert_released_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/offer_released_textView" />
 
     <TextView
-        android:id="@+id/offert_price_textView"
+        android:id="@+id/offer_price_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offert_description_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/offer_description_textView" />
 
     <TextView
         android:id="@+id/textView15"
@@ -87,4 +87,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
