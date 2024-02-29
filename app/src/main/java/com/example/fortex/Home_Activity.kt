@@ -17,6 +17,9 @@ class Home_Activity : AppCompatActivity() {
     lateinit var specialOffersRecyclerView: RecyclerView
     lateinit var bestOfferImageView: ImageView
     lateinit var bestOfferPriceTextView: TextView
+    lateinit var notificationImageView: ImageView
+    lateinit var homeImageView: ImageView
+    lateinit var newsImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class Home_Activity : AppCompatActivity() {
         specialOffersRecyclerView = findViewById(R.id.home_special_offers_recyclerView)
         bestOfferImageView = findViewById(R.id.home_bestoffert_imageView)
         bestOfferPriceTextView = findViewById(R.id.home_bestoffer_price_textView)
+        notificationImageView  = findViewById(R.id.notification_notification_imageView)
+        homeImageView  = findViewById(R.id.notification_home_imageView)
+        newsImageView  = findViewById(R.id.notification_news_imageView)
 
         recommendedOffersRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         specialOffersRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -36,12 +42,22 @@ class Home_Activity : AppCompatActivity() {
 
         fetchBestOfferFromFirebase()
 
-        val newsImageView: ImageView = findViewById(R.id.home_news_imageView)
-
         newsImageView.setOnClickListener {
             val intent = Intent(this, News_Activity::class.java)
             startActivity(intent)
         }
+
+        notificationImageView.setOnClickListener{
+            val intent = Intent(this, Notification_Activity::class.java)
+            startActivity(intent)
+        }
+
+        homeImageView.setOnClickListener{
+            val intent = Intent(this, Home_Activity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
     private fun fetchRecommendedOffersFromFirebase() {

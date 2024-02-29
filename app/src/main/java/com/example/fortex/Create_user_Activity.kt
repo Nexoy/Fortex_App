@@ -1,5 +1,6 @@
 package com.example.fortex
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -37,8 +38,8 @@ class Create_user_Activity : AppCompatActivity() {
 
         addImageButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "user/*"
-            startActivity(intent)
+            intent.type = "image/*"
+            startActivityForResult(intent, 1001)
         }
 
         registerButton.setOnClickListener {
@@ -47,53 +48,65 @@ class Create_user_Activity : AppCompatActivity() {
             val name = nameEdit.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty() && selectedImageUri != null) {
-                val user = auth.currentUser
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user = auth.currentUser
+                            val filename = UUID.randomUUID().toString()
+                            val ref = storage.reference.child("user/$filename")
 
-                val filename = UUID.randomUUID().toString()
-                val ref = storage.reference.child("user/$filename")
+                            ref.putFile(selectedImageUri!!)
+                                .addOnSuccessListener { taskSnapshot ->
+                                    ref.downloadUrl.addOnSuccessListener { uri ->
+                                        val imageUrl = uri.toString()
 
-                ref.putFile(selectedImageUri!!)
-                    .addOnSuccessListener { taskSnapshot ->
-                        ref.downloadUrl.addOnSuccessListener { uri ->
-                            val imageUrl = uri.toString()
+                                        val newUser = hashMapOf(
+                                            "uid" to user!!.uid,
+                                            "name" to name,
+                                            "imageUrl" to imageUrl
+                                        )
 
-                            val newUser = hashMapOf(
-                                "uid" to user!!.uid,
-                                "name" to name,
-                                "imageUrl" to imageUrl
-                            )
+                                        db.collection("users")
+                                            .add(newUser)
+                                            .addOnSuccessListener {
+                                                Log.d(TAG, "User added to Firestore successfully")
+                                                Toast.makeText(
+                                                    this,
+                                                    "User created successfully",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
 
-                            db.collection("users")
-                                .add(newUser)
-                                .addOnSuccessListener {
-                                    Log.d("CreateUserActivity", "User added to Firestore successfully")
-                                    Toast.makeText(
-                                        this,
-                                        "User created successfully",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-
-                                    val intent = Intent(this, MainActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
+                                                val intent = Intent(this, MainActivity::class.java)
+                                                startActivity(intent)
+                                                finish()
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Log.w(TAG, "Error adding user to Firestore", e)
+                                                Toast.makeText(
+                                                    this,
+                                                    "Error creating user",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                    }
                                 }
                                 .addOnFailureListener { e ->
-                                    Log.w("CreateUserActivity", "Error adding user to Firestore", e)
+                                    Log.w(TAG, "Error uploading image to Firebase Storage", e)
                                     Toast.makeText(
                                         this,
-                                        "Error creating user",
+                                        "Error uploading image",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w("CreateUserActivity", "Error uploading image to Firebase Storage", e)
-                        Toast.makeText(
-                            this,
-                            "Error uploading image",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
             } else {
                 Toast.makeText(
@@ -105,9 +118,15 @@ class Create_user_Activity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        if (requestCode == 1001 && resultCode == RESULT_OK) {
+            if (data != null && data.data != null) {
+                selectedImageUri = data.data
+            } else {
+                Log.e("CreateUserActivity", "Selected image URI is null")
+            }
+        }
     }
-
 }

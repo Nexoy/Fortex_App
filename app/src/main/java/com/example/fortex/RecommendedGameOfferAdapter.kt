@@ -27,7 +27,6 @@ class RecommendedGameOfferAdapter(private val offers: List<GameOffer>) : Recycle
         holder.priceTextView.text = "${offer.price} PLN"
         Glide.with(holder.itemView).load(offer.imageUrl).into(holder.imageView)
 
-        // Set click listener
         holder.itemView.setOnClickListener {
             onItemClickListener?.invoke(offer.title)
         }

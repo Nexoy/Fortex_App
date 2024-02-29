@@ -1,10 +1,12 @@
 package com.example.fortex
 
 data class NewsPost(
+    val postId: String,
     val gameName: String,
     val title: String,
     val description: String,
-    val likeNumber: Int,
-    val commentNumber: Int,
-    val imageUrl: String
+    val imageUrl: String,
+    var isLiked: Boolean,
+    val userId: String
 )
+

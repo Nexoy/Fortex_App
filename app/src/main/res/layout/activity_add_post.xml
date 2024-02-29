@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/add_post_arrow_imageView"
+        android:id="@+id/add_post_back_arrow_imageView"
         android:layout_width="30dp"
         android:layout_height="29dp"
         android:layout_marginStart="16dp"

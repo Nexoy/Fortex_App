@@ -9,10 +9,13 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Game_offer_Activity : AppCompatActivity() {
+
+    lateinit var backArrowImageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_offer)
 
+        backArrowImageView = findViewById(R.id.offer_back_arrow_imageView)
         val title = intent.getStringExtra("title")
 
         val db = FirebaseFirestore.getInstance()
@@ -44,5 +47,9 @@ class Game_offer_Activity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.e("Game_offer_Activity", "Error getting offer", exception)
             }
+
+        backArrowImageView.setOnClickListener {
+            finish()
+        }
     }
 }
